@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # High voltage
 gem 'high_voltage', '~> 2.4.0'
+# Devise
+gem 'devise', '~> 3.4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -37,6 +39,9 @@ gem 'high_voltage', '~> 2.4.0'
 
 # Letter Opener
 gem "letter_opener", :group => :development
+
+# Annotate
+gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 
 gem 'pry-rails', :group => :development
 

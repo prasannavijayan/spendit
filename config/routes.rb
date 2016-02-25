@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :expenses
 
-  get 'pages/home' => 'high_voltage/pages#show', id: 'home'
+
+  # Redirect to dashboard
+  authenticated :user do
+    root to: 'expenses#index', as: :authenticated_root
+  end
+
+  # To show other pages
+  # get '/*id' => 'pages#show', as: :page, format: false
+  unauthenticated :user do
+    root to: 'pages#show', id: 'home', as: :unauthenticated_root
+  end
+
+  # root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
