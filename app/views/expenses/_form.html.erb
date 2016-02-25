@@ -1,0 +1,27 @@
+<div class="col-xs-6">
+  <%= form_for(@expense) do |f| %>
+    <% if @expense.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+        <ul>
+        <% @expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :title %><br>
+      <%= f.text_area :title, class:"form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :amount %><br>
+      <%= f.text_field :amount, class:"form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'update', :class=> "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  
+  <div class="row">
+
+    <%= render('sidemenu') %>
+
+    <div class="col-xs-9">
+      <h2>Expenses on <%= @date.strftime("%B") %></h2>
+      <h6><i class="fa fa-calendar"></i> <%= @date.strftime("%B %d, %Y") %></h6>
+
+
+
+      <hr>
+          <%= link_to raw('<i class="fa fa-arrow-left"></i> Back'), expenses_path %> - Add New Expense
+      <hr>
+      <%= render 'form' %>
+
+    </div>
+  </div>
+</div>

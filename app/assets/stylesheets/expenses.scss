@@ -1,0 +1,33 @@
+// Place all the styles related to the Expenses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+  font-family: "Open Sans";
+}
+
+.side-menu {
+  text-align: center;
+}
+
+.box-pad {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.spent-remaining {
+  text-align: center;
+  color: white;
+  .spent {
+    @extend .col-xs-12;
+    @extend .box-pad;
+    background-color: red;
+    font-size: 36px;
+  }
+  .remaining {
+    @extend .col-xs-12;
+    @extend .box-pad;
+    background-color: green;
+    font-size: 36px;
+  }
+}
