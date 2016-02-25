@@ -40,6 +40,9 @@ gem 'devise', '~> 3.4.0'
 # Letter Opener
 gem "letter_opener", :group => :development
 
+# Annotate
+gem 'annotate'
+
 gem 'pry-rails', :group => :development
 
 group :development, :test do
