@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jeremyolliver/annotate_models.git
+  revision: 4d57e4fe6360125f17886168120a48091a268e45
+  branch: rake_compatibility
+  specs:
+    annotate (2.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,9 +44,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    annotate (2.6.3)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -180,7 +184,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
+  annotate!
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)

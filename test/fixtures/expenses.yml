@@ -7,3 +7,15 @@ one:
 two:
   title: MyText
   amount: 1.5
+
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id         :integer         not null, primary key
+#  title      :text
+#  amount     :float
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

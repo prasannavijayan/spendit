@@ -41,7 +41,7 @@ gem 'devise', '~> 3.4.0'
 gem "letter_opener", :group => :development
 
 # Annotate
-gem 'annotate'
+gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 
 gem 'pry-rails', :group => :development
 
