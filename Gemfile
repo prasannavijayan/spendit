@@ -37,6 +37,9 @@ gem 'devise', '~> 3.4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Letter Opener
+gem "letter_opener", :group => :development
+
 gem 'pry-rails', :group => :development
 
 group :development, :test do
