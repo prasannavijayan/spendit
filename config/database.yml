@@ -44,6 +44,7 @@ development: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  username: <username>
-  password: <password>
+  username: postgres
+  password: macro129
+  database: spendit-development
   pool: 5
