@@ -8,8 +8,11 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
-    @expenses[2].each do |expense|
-      @total_expenses = @total_expenses + expense.amount
+    # binding.pry
+    unless @expenses[2].nil?
+      @expenses[2].each do |expense|
+        @total_expenses = @total_expenses + expense.amount
+      end
     end
   end
 
@@ -20,8 +23,10 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
-    @expenses[2].each do |expense|
-      @total_expenses = @total_expenses + expense.amount
+    unless @expenses[2].nil?
+      @expenses[2].each do |expense|
+        @total_expenses = @total_expenses + expense.amount
+      end
     end
   end
 
@@ -32,8 +37,10 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
-    @expenses[2].each do |expense|
-      @total_expenses = @total_expenses + expense.amount
+    unless @expenses[2].nil?
+      @expenses[2].each do |expense|
+        @total_expenses = @total_expenses + expense.amount
+      end
     end
   end
 
@@ -43,8 +50,10 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
-    @expenses[2].each do |expense|
-      @total_expenses = @total_expenses + expense.amount
+    unless @expenses[2].nil?
+      @expenses[2].each do |expense|
+        @total_expenses = @total_expenses + expense.amount
+      end
     end
   end
 
@@ -52,7 +61,7 @@ class ExpensesController < ApplicationController
   # POST /expenses.json
   def create
     @expense = Expense.new(expense_params)
-
+    @expense.user_id = current_user.id if current_user
     respond_to do |format|
       if @expense.save
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
