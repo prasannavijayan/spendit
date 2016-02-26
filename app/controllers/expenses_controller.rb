@@ -77,6 +77,7 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1.json
   def update
     respond_to do |format|
+      @expense.user_id = current_user.id if current_user
       if @expense.update(expense_params)
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
