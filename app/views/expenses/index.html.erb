@@ -30,8 +30,13 @@
                 <% end %>
                 <td><%= expense.created_at.strftime("%B %d, %Y") %></td>
                 <td><%= link_to raw('<i class="fa fa-eye"></i>'), expense %></td>
-                <td><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_expense_path(expense) %></td>
-                <td><%= link_to raw('<i class="fa fa-trash"></i>'), expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if expense.user.email == @current_user.email %>
+                  <td><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_expense_path(expense) %></td>
+                  <td><%= link_to raw('<i class="fa fa-trash"></i>'), expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                  <td><td>
+                  <td><td>
+                <% end %>
               </tr>
             <% end %>
           <% else %>

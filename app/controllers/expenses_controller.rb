@@ -8,6 +8,7 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
+    @current_user = current_user
     # binding.pry
     unless @expenses[2].nil?
       @expenses[2].each do |expense|
@@ -23,6 +24,7 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
+    @current_user = current_user
     unless @expenses[2].nil?
       @expenses[2].each do |expense|
         @total_expenses = @total_expenses + expense.amount
@@ -50,6 +52,7 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all.group_by { |m| m.created_at.month }
     @month = Time.current.month
     @date = Time.current
+    @current_user = current_user
     unless @expenses[2].nil?
       @expenses[2].each do |expense|
         @total_expenses = @total_expenses + expense.amount
