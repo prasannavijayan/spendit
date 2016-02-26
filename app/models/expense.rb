@@ -1,4 +1,7 @@
 class Expense < ActiveRecord::Base
+
+  # Associations
+  belongs_to :user
 end
 
 # == Schema Information
@@ -11,4 +14,3 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-
