@@ -4,7 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+  before_action :set_user, if: :user_signed_in?
+
+  include Pundit
+
   layout :layout_by_resource
+
+  private
+  def set_user
+    @user = current_user
+  end
 
   protected
 

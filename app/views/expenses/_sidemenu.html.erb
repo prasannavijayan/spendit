@@ -3,6 +3,8 @@
   <h5>Household spending</h5>
   <div class="spent-remaining">
     <h3 class="spent">₹ <%= @total_expenses %></h3>
-    <h3 class="remaining">₹ <%= 30000 - @total_expenses %></h3>
+    <h3 class="remaining">₹ <%= @budget - @total_expenses %></h3>
   </div>
+  <%= link_to raw("<i class='fa fa-pencil'></i> Edit profile"), preference_path(@current_user.id), :class => 'navbar-link' %> <br>
+  <%= link_to raw("<i class='fa fa-sign-out'></i> Logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 </div>

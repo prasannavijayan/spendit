@@ -43,7 +43,14 @@ gem "letter_opener", :group => :development
 # Annotate
 gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 
+# pry gem
 gem 'pry-rails', :group => :development
+
+# Simple form
+gem 'simple_form'
+
+# pundit
+gem "pundit"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

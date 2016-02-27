@@ -5,7 +5,7 @@ class CreateExpenses < ActiveRecord::Migration
     create_table :expenses, id: :uuid do |t|
       t.text :title
       t.float :amount
-      t.belongs_to :user
+      t.uuid :user_id
 
       t.timestamps null: false
     end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :expenses
 
+  # update user profile
+  resources :preferences, only: [:show, :update]
 
   # Redirect to dashboard
   authenticated :user do

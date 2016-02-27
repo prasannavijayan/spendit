@@ -4,60 +4,24 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    # binding.pry
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1
   # GET /expenses/1.json
   def show
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1/edit
   def edit
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # POST /expenses
@@ -102,6 +66,22 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+    # expense view
+    def expense_details
+      @total_expenses = 0
+      @expenses = Expense.all.group_by { |m| m.created_at.month }
+      @month = Time.current.month
+      @date = Time.current
+      @current_user = current_user
+      @budget = current_user.budget
+      # binding.pry
+      unless @expenses[2].nil?
+        @expenses[2].each do |expense|
+          @total_expenses = @total_expenses + expense.amount
+        end
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
