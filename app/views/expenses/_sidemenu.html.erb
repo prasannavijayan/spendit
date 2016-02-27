@@ -2,7 +2,7 @@
   <h1><i class="fa fa-shopping-cart"></i> <br><%= link_to 'Spendit', expenses_path, class: "lead" %></h1>
   <h5>Household spending</h5>
   <div class="spent-remaining">
-    <h3 class="spent"><%= @total_expenses %></h3>
-    <h3 class="remaining"><%= 30000 - @total_expenses %></h3>
+    <h3 class="spent">₹ <%= @total_expenses %></h3>
+    <h3 class="remaining">₹ <%= 30000 - @total_expenses %></h3>
   </div>
 </div>
