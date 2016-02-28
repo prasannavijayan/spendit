@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   before_action :set_user, if: :user_signed_in?
+  before_action :set_user_budget, if: :user_signed_in?
 
   include Pundit
 
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   private
   def set_user
     @user = current_user
+  end
+
+  def set_user_budget
+    @user_budget = current_user.user_budget
   end
 
   protected

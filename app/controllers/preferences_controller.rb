@@ -5,9 +5,9 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    authorize @user
+    # authorize @user_budget
     if params[:user].present?
-      @user.update(user_params)
+      @user_budget.update(user_params)
       flash[:success] = 'Profile updated successfully.'
     else
       flash[:success] = 'Please check the errors.'
@@ -20,7 +20,7 @@ class PreferencesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :budget)
+    params.require(:user_budget).permit(:budget)
   end
 
   def expense_details
@@ -29,7 +29,7 @@ class PreferencesController < ApplicationController
     @month = Time.current.month
     @date = Time.current
     @current_user = current_user
-    @budget = current_user.budget
+
     # binding.pry
     unless @expenses[2].nil?
       @expenses[2].each do |expense|

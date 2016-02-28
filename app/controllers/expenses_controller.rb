@@ -74,7 +74,6 @@ class ExpensesController < ApplicationController
       @month = Time.current.month
       @date = Time.current
       @current_user = current_user
-      @budget = current_user.budget
       # binding.pry
       unless @expenses[2].nil?
         @expenses[2].each do |expense|

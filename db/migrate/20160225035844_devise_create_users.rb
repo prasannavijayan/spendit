@@ -35,8 +35,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.uuid    :account_id,  null: false
       t.string  :firstname,        limit: 250
       t.string  :lastname,        limit: 250
-        # Need to think whether null:false is required for the flow.
-      t.float   :budget #,        null: false
       # t.boolean :is_active,   default: true
       # t.string  :timezone,    limit: 250, default: 'UTC'
       t.timestamps

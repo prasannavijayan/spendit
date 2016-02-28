@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :expense
+  has_many :user_budget
 end
 
 # == Schema Information
