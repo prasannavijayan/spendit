@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :expenses
 
+  # used to check all the expenses
+  get '/allexpense/:id', as: :allexpense ,to: 'expenses#allexpense'
+
+
   # update user profile
   resources :user_budgets
 

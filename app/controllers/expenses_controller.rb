@@ -13,6 +13,12 @@ class ExpensesController < ApplicationController
     expense_details
   end
 
+  # Show all expenses
+  def allexpense
+    @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    @expense = Expense.all.group_by { |m| m.created_at.month }
+  end
+
   # GET /expenses/new
   def new
     @expense = Expense.new
@@ -70,16 +76,16 @@ class ExpensesController < ApplicationController
     # expense view
     def expense_details
       @user_budget = UserBudget.new
+      @months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       next_month_budget
       this_month_budget
       @total_expenses = 0
       @expenses = Expense.all.group_by { |m| m.created_at.month }
-      @month = Time.current.month
-      @date = Time.current
+      @month = Time.now.month
+      @date = Time.now
       @current_user = current_user
-      # binding.pry
-      unless @expenses[2].nil?
-        @expenses[2].each do |expense|
+      unless @expenses[@month].nil?
+        @expenses[@month].each do |expense|
           @total_expenses = @total_expenses + expense.amount
         end
       end

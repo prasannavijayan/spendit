@@ -1,0 +1,12 @@
+<div class="container">
+  <%= link_to raw("<i class='fa fa-arrow-left'></i> Back"), root_path, method: :get, :class => 'navbar-link'  %>
+  <% @expense.each do |format|%>
+    <% m = format[0] %>
+    <h3><%= @months[m] %></h3><br>
+    <% @monthly_expense = format[1] %>
+    <% @monthly_expense.each do |month| %>
+      <%= month.title %> = <%= month.amount %> | <%= month.created_at %> <br>
+    <% end %>
+    <hr>
+  <% end %>
+</div>

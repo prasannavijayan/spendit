@@ -17,5 +17,6 @@
     <% end %>
   </div>
   <%#= link_to raw("<i class='fa fa-pencil'></i> Edit profile"), preference_path(@current_user.id), :class => 'navbar-link' %> <br>
+  <%= link_to raw("All Expense"), allexpense_path(@current_user), method: :get, :class => 'navbar-link'  %><br>
   <%= link_to raw("<i class='fa fa-sign-out'></i> Logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 </div>
