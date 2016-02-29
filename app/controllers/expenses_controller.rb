@@ -106,7 +106,6 @@ class ExpensesController < ApplicationController
          else
            @next_month_budget = false
          end
-         binding.pry
       else
         @next_month_budget = false
         @budget = @budget_record.first.budget
