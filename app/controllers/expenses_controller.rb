@@ -69,6 +69,9 @@ class ExpensesController < ApplicationController
 
     # expense view
     def expense_details
+      @user_budget = UserBudget.new
+      next_month_budget
+      this_month_budget
       @total_expenses = 0
       @expenses = Expense.all.group_by { |m| m.created_at.month }
       @month = Time.current.month
@@ -90,4 +93,52 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:title, :amount)
     end
+
+    # Budget
+    def next_month_budget
+      nextmonth = Time.now.strftime("%m").to_i + 1
+      budgetyear = Time.now.year
+      budgetdate = nextmonth.to_s + budgetyear.to_s
+      @budget_record = UserBudget.where(user_id: current_user.id, budget_date: budgetdate)
+      if @budget_record.blank?
+         if get_last_week_of_this_month.include? Time.now.strftime("%d %b %Y")
+           @next_month_budget = true
+         else
+           @next_month_budget = false
+         end
+         binding.pry
+      else
+        @next_month_budget = false
+        @budget = @budget_record.first.budget
+      end
+    end
+
+    def this_month_budget
+      budgetdate = Time.now.strftime("%m%Y").to_i
+      @budget_record = UserBudget.where(user_id: current_user.id, budget_date: budgetdate)
+      if @budget_record.count == 0
+        @this_month_budget = true
+      else
+        @this_month_budget = false
+        @budget = @budget_record.first.budget
+      end
+    end
+
+    # Not the best practise need to check and change the code.
+    def get_last_week_of_this_month
+      weeklist = []
+      for i in 0..5 do
+        weeklist << (Date.today.end_of_month - i).strftime("%d %b %Y")
+      end
+      return weeklist
+    end
+
+    def first_two_days_of_this_month
+      first_week = []
+      for i in 0..2 do
+        first_week << (Date.today.end_of_month + i).strftime("%d %b %Y")
+      end
+      return first_week
+    end
+
 end

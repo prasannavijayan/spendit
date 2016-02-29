@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :expenses
 
   # update user profile
-  resources :preferences, only: [:show, :update]
+  resources :user_budgets
 
   # Redirect to dashboard
   authenticated :user do

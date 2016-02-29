@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20160227182544) do
   create_table "user_budgets", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.float    "budget"
     t.uuid     "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "budget_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
