@@ -22,3 +22,36 @@ body {
 .top-space {
   padding-top: 20px;
 }
+
+/* Landing page */
+.bg {
+  &-emerald {
+    background-color: #3FC380;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    color: white;
+  }
+}
+
+.landingpage {
+  .side {
+    &-header {
+      text-align: center;
+      margin-top: 15%;
+    }
+  }
+}
+
+
+/* global - Change the code there to global.scss */
+.font {
+  &72 {
+    font-size: 72px;
+  }
+
+  &32 {
+    font-size: 32px;
+  }
+}
