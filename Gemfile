@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use pg as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.4'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
@@ -43,7 +43,14 @@ gem "letter_opener", :group => :development
 # Annotate
 gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 
+# pry gem
 gem 'pry-rails', :group => :development
+
+# Simple form
+gem 'simple_form'
+
+# pundit
+gem "pundit"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

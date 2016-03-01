@@ -6,13 +6,14 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :expense
+  has_many :user_budget
 end
 
 # == Schema Information
 #
 # Table name: users
 #
-#  id                     :integer         not null, primary key
+#  id                     :uuid            not null, primary key
 #  email                  :string          default(""), not null
 #  encrypted_password     :string          default(""), not null
 #  reset_password_token   :string
@@ -23,6 +24,8 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
+#  firstname              :string(250)
+#  lastname               :string(250)
 #  created_at             :datetime
 #  updated_at             :datetime
 #

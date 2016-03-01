@@ -1,7 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     enable_extension 'uuid-ossp'
-    create_table(:users) do |t|
+    create_table :users, id: :uuid do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -30,6 +30,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+
+      # Custom
+      # t.uuid    :account_id,  null: false
+      t.string  :firstname,        limit: 250
+      t.string  :lastname,        limit: 250
+      # t.boolean :is_active,   default: true
+      # t.string  :timezone,    limit: 250, default: 'UTC'
+      t.timestamps
 
 
       t.timestamps

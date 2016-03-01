@@ -6,6 +6,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-/* externa; */
+/* external */
 @import "expenses";
 @import "home";
+
+
+/* Override bootstrap */
+@import "global";
