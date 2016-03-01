@@ -1,4 +1,4 @@
-class Expense < ActiveRecord::Base
+class UserBudget < ActiveRecord::Base
 
   # Associations
   belongs_to :user
@@ -6,12 +6,12 @@ end
 
 # == Schema Information
 #
-# Table name: expenses
+# Table name: user_budgets
 #
 #  id         :uuid            not null, primary key
-#  title      :text
-#  amount     :float
+#  budget     :float
 #  user_id    :uuid
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+

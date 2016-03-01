@@ -1,0 +1,19 @@
+/* Global scss */
+
+
+/* override bootstrap */
+.form-group {
+  label {
+    color: black !important;
+  }
+}
+
+
+.text {
+  &-spent {
+    color: red;
+  }
+  &-remaining {
+    color: green;
+  }
+}

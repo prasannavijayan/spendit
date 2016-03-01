@@ -48,6 +48,16 @@
       <br>
 
       <%= link_to raw('<i class="fa fa-plus"></i> Add New'), new_expense_path %>
+      <br><br>
+      <% if @this_month_budget %>
+        <div class="col-xs-4">
+          <%= simple_form_for @user_budget, html: {class: 'form-horizontal' } do |f| %>
+            <%= f.input :month, :as => :hidden, :input_html => { :value => "this" } %>
+            <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for this month', input_html: { class: 'form-control' } %>
+            <%= f.button :submit, class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
