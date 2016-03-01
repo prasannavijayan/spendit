@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
   # Show all expenses
   def allexpense
     @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    @expense = Expense.all.group_by { |m| m.created_at.month }
+    @expense = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
   end
 
   # GET /expenses/new
@@ -80,7 +80,7 @@ class ExpensesController < ApplicationController
       next_month_budget
       this_month_budget
       @total_expenses = 0
-      @expenses = Expense.all.group_by { |m| m.created_at.month }
+      @expenses = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
       @month = Time.now.month
       @date = Time.now
       @current_user = current_user

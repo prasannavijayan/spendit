@@ -2,10 +2,10 @@
   <%= link_to raw("<i class='fa fa-arrow-left'></i> Back"), root_path, method: :get, :class => 'navbar-link'  %>
   <% @expense.each do |format|%>
     <% m = format[0] %>
-    <h3>Expenses on <%= @months[m] %> -
+    <h3>Expenses on <%= @months[m] %> |
     <% monthly_budget = get_budget_by_month_year(m, format[1].first.created_at.year) %>
     <% monthly_expense = get_all_month_expenses(m, format[1].first.created_at.year) %>
-    <%= monthly_budget %> - <%= monthly_expense %> = <%= monthly_budget - monthly_expense %>
+    <%= monthly_budget %> - <span class="text-spent"><%= monthly_expense %></span> = <span class="text-remaining"><%= monthly_budget - monthly_expense %></span>
     </h3><br>
     <% @monthly_expense = format[1] %>
     <table class="table">
@@ -23,5 +23,9 @@
       </tbody>
     </table>
     <hr>
+  <% end %>
+  <% if @expense.blank? %>
+  <br><br>
+   <p class="">Your slate is clean, you can add a new expense <%= link_to "here", root_path %></p>
   <% end %>
 </div>
