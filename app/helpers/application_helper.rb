@@ -19,4 +19,30 @@ module ApplicationHelper
     nil
   end
 
+  # Get budget of all time
+
+  def get_budget_by_month_year(month, year)
+     #---- important---- Need to check and write for varioud scenarios later
+     budget_date = month.to_s + year.to_s
+     budget = UserBudget.where(user_id: current_user.id, budget_date: budget_date)
+     return budget.first.budget
+  end
+
+  def get_all_month_expenses(month, year)
+    # allexpense = Expense.all.group_by { |month| month.created_at.month }
+    # Need to check this code for better performance.. This could be a challenging thing to do.
+    total_expenses = 0
+    get_expense_by_year = Expense.all.group_by { |year| year.created_at.year }
+    get_expense_by_months = get_expense_by_year[year].group_by { |month| month.created_at.month }
+    expense_of_the_month = get_expense_by_months[month]
+    unless expense_of_the_month.nil?
+      expense_of_the_month.each do |expense|
+        total_expenses = total_expenses + expense.amount
+      end
+    end
+
+    return total_expenses
+  end
+
+
 end
