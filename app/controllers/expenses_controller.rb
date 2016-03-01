@@ -4,60 +4,30 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    # binding.pry
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1
   # GET /expenses/1.json
   def show
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
+  end
+
+  # Show all expenses
+  def allexpense
+    @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    @expense = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
   end
 
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1/edit
   def edit
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # POST /expenses
@@ -102,6 +72,24 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+    # expense view
+    def expense_details
+      @user_budget = UserBudget.new
+      @months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      next_month_budget
+      this_month_budget
+      @total_expenses = 0
+      @expenses = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
+      @month = Time.now.month
+      @date = Time.now
+      @current_user = current_user
+      unless @expenses[@month].nil?
+        @expenses[@month].each do |expense|
+          @total_expenses = @total_expenses + expense.amount
+        end
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
@@ -111,4 +99,51 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:title, :amount)
     end
+
+    # Budget
+    def next_month_budget
+      nextmonth = Time.now.strftime("%m").to_i + 1
+      budgetyear = Time.now.year
+      budgetdate = nextmonth.to_s + budgetyear.to_s
+      @budget_record = UserBudget.where(user_id: current_user.id, budget_date: budgetdate)
+      if @budget_record.blank?
+         if get_last_week_of_this_month.include? Time.now.strftime("%d %b %Y")
+           @next_month_budget = true
+         else
+           @next_month_budget = false
+         end
+      else
+        @next_month_budget = false
+        @budget = @budget_record.first.budget
+      end
+    end
+
+    def this_month_budget
+      budgetdate = Time.now.strftime("%m%Y").to_i
+      @budget_record = UserBudget.where(user_id: current_user.id, budget_date: budgetdate)
+      if @budget_record.count == 0
+        @this_month_budget = true
+      else
+        @this_month_budget = false
+        @budget = @budget_record.first.budget
+      end
+    end
+
+    # Not the best practise need to check and change the code.
+    def get_last_week_of_this_month
+      weeklist = []
+      for i in 0..5 do
+        weeklist << (Date.today.end_of_month - i).strftime("%d %b %Y")
+      end
+      return weeklist
+    end
+
+    def first_two_days_of_this_month
+      first_week = []
+      for i in 0..2 do
+        first_week << (Date.today.end_of_month + i).strftime("%d %b %Y")
+      end
+      return first_week
+    end
+
 end
