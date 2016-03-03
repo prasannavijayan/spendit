@@ -17,6 +17,7 @@ class ExpensesController < ApplicationController
   def allexpense
     @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     @expense = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
+    expense_details
   end
 
   # GET /expenses/new

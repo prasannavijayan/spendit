@@ -34,7 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # Custom
       # t.uuid    :account_id,  null: false
       t.string  :firstname,        limit: 250
-      t.string  :lastname,        limit: 250
+      t.string  :lastname,         limit: 250
+      t.string  :gender,           limit: 10
       # t.boolean :is_active,   default: true
       # t.string  :timezone,    limit: 250, default: 'UTC'
       t.timestamps

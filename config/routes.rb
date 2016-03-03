@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # used to check all the expenses
   get '/allexpense/:id', as: :allexpense ,to: 'expenses#allexpense'
 
+  # PreferencesController
+  resources :preferences, only: [:show, :update]
+
 
   # update user profile
   resources :user_budgets

@@ -1,0 +1,17 @@
+<div class="container">
+  <%= render('expenses/sidemenu') %>
+
+  <div class="col-xs-6 expense-pane">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2><i class='fa fa-cog'></i> Settings</h2>
+        <%= simple_form_for @user, url: preference_path do |f| %>
+          <%= f.input :firstname, wrapper_html: { class: 'form-group'}, input_html: { class: 'form-control' }, placeholder: "Firstname" %>
+          <%= f.input :lastname, wrapper_html: { class: 'form-group'}, input_html: { class: 'form-control' }, placeholder: "Lastname" %>
+          <%= f.select :gender,  User::GENDER_TYPES, wrapper_html: { class: 'form-group'}, input_html: { class: 'form-control' } %><br><br>
+          <%= f.button :submit, value: "Update", :class => 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

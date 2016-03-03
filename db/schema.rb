@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160227182544) do
     t.string   "last_sign_in_ip"
     t.string   "firstname",              limit: 250
     t.string   "lastname",               limit: 250
+    t.string   "gender",                 limit: 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
