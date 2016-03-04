@@ -1,2 +1,4 @@
-# spendit
-##### Simple yet powerful expense app
+# ₹ spendit
+##### Simple yet powerful expense tracking app
+
+- By Prasanna Vijayan
