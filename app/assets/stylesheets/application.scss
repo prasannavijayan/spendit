@@ -7,9 +7,9 @@
 @import "font-awesome";
 
 /* external */
-@import "expenses";
-@import "home";
+@import "components/expenses";
+@import "components/home";
 
 
 /* Override bootstrap */
-@import "global";
+@import "components/global";
