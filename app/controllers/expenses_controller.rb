@@ -80,7 +80,7 @@ class ExpensesController < ApplicationController
     # expense view
     def expense_details
       @user_budget = UserBudget.new
-      @months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       next_month_budget
       this_month_budget
       @total_expenses = 0

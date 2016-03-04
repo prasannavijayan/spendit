@@ -19,26 +19,7 @@
     <h3 class="spent">₹ <%= @total_expenses %></h3>
     <% unless @budget.nil? %>
       <h3 class="remaining">₹ <%= @budget - @total_expenses %></h3>
-    <% else %>
-      <h3 class="remaining">₹ <%= @total_expenses %></h3>
-    <% end %>
-    <% if @next_month_budget %>
-      <%= simple_form_for @user_budget, html: {class: 'form-horizontal' } do |f| %>
-        <%= f.input :month, :as => :hidden, :input_html => { :value => "next" } %>
-        <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for next month', input_html: { class: 'form-control' } %>
-        <%= f.button :submit, class: 'btn btn-success' %>
-      <% end %>
-    <% end %>
-
-    <% if @this_month_budget %>
-      <div class="col-xs-12">
-        <%= simple_form_for @user_budget, html: {class: 'form-horizontal' } do |f| %>
-          <%= f.input :month, :as => :hidden, :input_html => { :value => "this" } %>
-          <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for this month', input_html: { class: 'form-control' } %>
-          <%= f.button :submit, class: 'btn btn-success' %>
-        <% end %>
-      </div>
-    <% end %>
+    <% end %>    
   </div>
 
   <%#= link_to raw("<i class='fa fa-pencil'></i> Edit profile"), preference_path(@current_user.id), :class => 'navbar-link' %> <br>

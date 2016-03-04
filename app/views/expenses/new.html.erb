@@ -1,17 +1,12 @@
-<div class="container">
-
-  <%= render('sidemenu') %>
-
-  <div class="col-xs-6 expense-pane">
-    <h2>Expenses on <%= @date.strftime("%B") %></h2>
-    <h6><i class="fa fa-calendar"></i> <%= @date.strftime("%B %d, %Y") %></h6>
+<div class="col-xs-6 expense-pane">
+  <h2>Expenses on <%= @date.strftime("%B") %></h2>
+  <h6><i class="fa fa-calendar"></i> <%= @date.strftime("%B %d, %Y") %></h6>
 
 
 
-    <hr>
-        <%= link_to raw('<i class="fa fa-arrow-left"></i> Back'), root_path %> - Add New Expense
-    <hr>
-    <%= render 'form' %>
+  <hr>
+      <%= link_to raw('<i class="fa fa-arrow-left"></i> Back'), root_path %> - Add New Expense
+  <hr>
+  <%= render 'form' %>
 
-  </div>
 </div>

@@ -1,0 +1,20 @@
+<div class="col-xs-12">
+  <h3> Budget Pane </h3>
+</div>
+<% if @next_month_budget %>
+  <%= simple_form_for @user_budget do |f| %>
+    <%= f.input :month, :as => :hidden, :input_html => { :value => "next" } %>
+    <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for next month', input_html: { class: 'form-control' } %>
+    <%= f.button :submit, class: 'btn btn-success' %>
+  <% end %>
+<% end %>
+
+<% if @this_month_budget %>
+  <div class="col-xs-12">
+    <%= simple_form_for @user_budget do |f| %>
+      <%= f.input :month, :as => :hidden, :input_html => { :value => "this" } %>
+      <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for this month', input_html: { class: 'form-control' } %>
+      <%= f.button :submit, class: 'btn btn-success', value: "Fix your budget" %>
+    <% end %>
+  </div>
+<% end %>
