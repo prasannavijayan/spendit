@@ -17,17 +17,35 @@
 }
 .spent-remaining {
   text-align: center;
-  color: white;
   .spent {
     @extend .col-xs-12;
     @extend .box-pad;
-    background-color: red;
+    border:thin solid #F3F3F3;
+    border-left:10px solid #db3236;
     font-size: 36px;
   }
   .remaining {
     @extend .col-xs-12;
     @extend .box-pad;
-    background-color: green;
+    border:thin solid #F3F3F3;
+    border-left:10px solid #3cba54;
     font-size: 36px;
+  }
+}
+
+.expense-pane {
+  border-right: 1px solid #F3F3F3;
+  border-left: 1px solid #F3F3F3;
+  min-height: 500px;
+}
+
+.profile{
+  &-icon {
+    width: 50px;
+    height: 50px;
+    border: thin solid #F3F3F3;
+  }
+  &-name {
+    padding-top: 8px;
   }
 }

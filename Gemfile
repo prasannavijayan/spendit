@@ -37,7 +37,7 @@ gem 'devise', '~> 3.4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Letter Opener
+# Letter Opener only for development
 gem "letter_opener", :group => :development
 
 # Annotate
@@ -51,6 +51,9 @@ gem 'simple_form'
 
 # pundit
 gem "pundit"
+
+# Gravatar Image gem
+gem 'gravatar_image_tag'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

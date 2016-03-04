@@ -12,9 +12,16 @@
   <div class="container">
     <%= flash_messages %>
   </div>
+  <div class="container">
 
-  <%= yield %>
-  <br>
+    <%= render('expenses/sidemenu') %>
+
+    <%= yield %>
+
+    <div class="col-xs-3">
+      <%= render "expenses/budget_pane" %>
+    </div>
+  </div>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

@@ -25,7 +25,12 @@ module ApplicationHelper
      #---- important---- Need to check and write for varioud scenarios later
      budget_date = month.to_s + year.to_s
      budget = UserBudget.where(user_id: current_user.id, budget_date: budget_date)
-     return budget.first.budget
+     unless budget.blank?
+       return budget.first.budget
+     else
+       return "0"
+     end
+
   end
 
   def get_all_month_expenses(month, year)
