@@ -9,12 +9,15 @@
   <% end %>
 <% end %>
 
+<div class="col-xs-12">
 <% if @this_month_budget %>
-  <div class="col-xs-12">
-    <%= simple_form_for @user_budget do |f| %>
-      <%= f.input :month, :as => :hidden, :input_html => { :value => "this" } %>
-      <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for this month', input_html: { class: 'form-control' } %>
-      <%= f.button :submit, class: 'btn btn-success', value: "Fix your budget" %>
-    <% end %>
-  </div>
+  <%= simple_form_for @user_budget do |f| %>
+    <%= f.input :month, :as => :hidden, :input_html => { :value => "this" } %>
+    <%= f.input :budget, wrapper_html: { class: 'form-group' }, placeholder: 'Your budget for this month', input_html: { class: 'form-control' } %>
+    <%= f.button :submit, class: 'btn btn-success', value: "Fix your budget" %>
+  <% end %>
+<% else %>
+  <h5> Your budget for this month is <br>₹ <%= @budget %> </h5>
+  <%#= link_to raw("<i class='fa fa-pencil'></i> Edit")%>
 <% end %>
+</div>
