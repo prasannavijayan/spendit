@@ -8,6 +8,13 @@
   }
 }
 
+/* Alert notice */
+
+.alert {
+  &-notice {
+    @extend .alert-info;
+  }
+}
 
 .text {
   &-spent {
