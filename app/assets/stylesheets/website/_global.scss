@@ -1,0 +1,10 @@
+//
+// Global
+//--------------------------------
+
+// basic Mixin
+
+@mixin padding-horizontal($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}

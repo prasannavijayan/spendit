@@ -2,6 +2,33 @@
 // Home
 //------------------------------
 
-.main-logo {
-  width: 200px;
+.main {
+  &-logo {
+    width: 200px;
+  }
+}
+
+.expense-logo {
+  width: 150px;
+  display: inline-block;
+}
+
+.herounit {
+  display: table;
+  text-align: center;
+  min-height:600px;
+  &-content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &-image {
+    display: initial;
+  }
+}
+
+.feature {
+  background-color: $header-color;
+  &-budget {
+    @include padding-horizontal(40px);
+  }
 }
