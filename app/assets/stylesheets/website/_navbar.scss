@@ -1,0 +1,43 @@
+//
+// Navbar
+//------------------------------
+
+.navbar {
+    min-height: 95px;
+    &-default {
+    background-color: #f3f3f3;
+    border: none;
+  }
+  &-right {
+    @media screen and (min-width: $screen-sm-min) {
+      margin-top: 4px;
+    }
+  }
+
+  &-collapse {
+    @media screen and (max-width: $screen-xs-max) {
+      margin-top: 25px;
+    }
+  }
+
+  &-toggle {
+    margin-top: 26px;
+  }
+
+  // On hover li a
+  &-nav {
+    @media screen and (min-width: $screen-sm-min) {
+      li {
+        padding: 15px;
+        a {
+          padding-left: 0;
+          padding-right: 0;
+          padding-bottom: 5px;
+          &:hover {
+            border-bottom: 2px solid;
+          }
+        }
+      }
+    }
+  }
+}
