@@ -1,0 +1,15 @@
+/* Bootstrap */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* font awesome */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* external */
+@import "components/expenses";
+@import "components/home";
+
+
+/* Override bootstrap */
+@import "components/global";
