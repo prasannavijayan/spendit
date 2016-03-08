@@ -28,7 +28,7 @@
           <% @expenses[@month].each do |expense| %>
             <tr>
               <td><%= expense.title %></td>
-              <td>₹<%= expense.amount %></td>
+              <td><i class="fa fa-inr"></i> <%= expense.amount %></td>
               <% unless expense.user.firstname.blank? %>
                 <td><%= expense.user.firstname %></td>
               <% else %>
