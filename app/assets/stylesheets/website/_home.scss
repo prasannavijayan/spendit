@@ -27,8 +27,17 @@
 }
 
 .feature {
-  background-color: $header-color;
+  background-color: $budget-color;
   &-budget {
+    @include padding-horizontal(40px);
+  }
+}
+
+
+.about {
+  background-color: $about-color;
+  @extend .text-white;
+  &-container {
     @include padding-horizontal(40px);
   }
 }

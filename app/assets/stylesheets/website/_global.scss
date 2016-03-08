@@ -8,3 +8,11 @@
   padding-top: $value;
   padding-bottom: $value;
 }
+
+
+// text changes
+.text {
+  &-white {
+    color: $base-white;
+  }
+}
