@@ -9,14 +9,20 @@ class UserBudgetsController < ApplicationController
     if params["user_budget"]["month"] == "next"
       budgetmonth = Time.now.strftime("%m").to_i + 1
       @user_budget.budget_date = budgetmonth.to_s + Time.now.year.to_s
+      if @user_budget.save
+        flash[:success] = "Budget added for next month"
+      else
+        flash[:error] = "Please check your budget amount"
+      end
     else
       @user_budget.budget_date = Time.now.strftime("%m%Y")
+      if @user_budget.save
+        flash[:success] = "Budget added for this month"
+      else
+        flash[:error] = "Please check your budget amount"
+      end
     end
-    if @user_budget.save
-      flash[:success] = "Budget added for next month"
-    else
-      flash[:error] = "Please check your budget amount"
-    end
+
     redirect_to expenses_url
   end
 
