@@ -39,7 +39,34 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-development: &default
+development:
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: prasannavijayan
+  password:
+  database: spendit-development
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: prasannavijayan
+  password:
+  database: spendit-test
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: prasannavijayan
+  password:
+  database: spendit-development
+
+production:
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
