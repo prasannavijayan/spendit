@@ -16,8 +16,8 @@
       <%= f.button :submit, class: 'btn btn-success', value: "Fix your budget" %>
     <% end %>
   <% else %>
-    <h5> Your budget for this month is <br>₹ <%= @budget %> </h5>
-    <%#= link_to raw("<i class='fa fa-pencil'></i> Edit") %>
+    <h5> Your budget for this month is <br>₹ <%= @budget.budget %> </h5>
+    <%= link_to raw("<i class='fa fa-pencil'></i> Edit"), user_budget_path(@budget) %>
   <% end %>
   </div>
 </div>

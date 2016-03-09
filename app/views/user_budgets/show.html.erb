@@ -1,0 +1,11 @@
+<div class="col-xs-6 expense-pane">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><i class='fa fa-cog'></i> Budget</h2>
+      <%= simple_form_for @user_budget, url: user_budget_path do |f| %>
+        <%= f.input :budget, wrapper_html: { class: 'form-group'}, input_html: { class: 'form-control' }, placeholder: "Update this month expense" %>
+        <%= f.button :submit, value: "Update", :class => 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

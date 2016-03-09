@@ -19,7 +19,7 @@
   <div class="spent-remaining">
     <h3 class="spent"><i class="fa fa-inr"></i> <%= @total_expenses %></h3>
     <% unless @budget.nil? %>
-      <h3 class="remaining"><i class="fa fa-inr"></i> <%= @budget - @total_expenses %></h3>
+      <h3 class="remaining"><i class="fa fa-inr"></i> <%= @budget.budget - @total_expenses.to_i %></h3>
     <% end %>
   </div>
 

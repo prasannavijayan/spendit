@@ -27,7 +27,23 @@ class UserBudgetsController < ApplicationController
   end
 
 
-  def edit
+  def show
+  end
+
+  def update
+    # @user.id = current_user.id if current_user
+    # binding.pry
+    respond_to do |format|
+      if @user_budget.update(user_budget_params)
+        flash[:success] = "User Budget Updated"
+        format.html { redirect_to expenses_url }
+        format.json { render :show, status: :ok, location: expenses_url }
+      else
+        flash[:error] = "Please check your user errors."
+        format.html { render :show  }
+        format.json { render json: @user.errors, status: :unprocessable_entity}
+      end
+    end
   end
 
 
