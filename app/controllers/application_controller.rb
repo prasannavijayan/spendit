@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   # expense view
   def expense_details
-    @user_budget = UserBudget.new
+    @userbudget = UserBudget.new
     @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     next_month_budget
     this_month_budget

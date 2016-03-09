@@ -28,6 +28,7 @@ class UserBudgetsController < ApplicationController
 
 
   def show
+    expense_details
   end
 
   def update
