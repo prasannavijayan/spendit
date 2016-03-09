@@ -8,10 +8,10 @@ end
 #
 # Table name: expenses
 #
-#  id         :integer         not null, primary key
+#  id         :uuid            not null, primary key
 #  title      :text
 #  amount     :float
-#  user_id    :integer
+#  user_id    :uuid
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #

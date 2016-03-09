@@ -3,11 +3,13 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
+
 # Use pg as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.4'
+
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass', '~> 4.5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -37,27 +39,34 @@ gem 'devise', '~> 3.4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Letter Opener
+# Letter Opener only for development
 gem "letter_opener", :group => :development
 
 # Annotate
 gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 
+# pry gem
 gem 'pry-rails', :group => :development
 
 # Heroku
 gem 'rails_12factor', group: :production
 
+# Simple form
+gem 'simple_form'
+
+# pundit
+gem "pundit"
+
+# Gravatar Image gem
+gem 'gravatar_image_tag'
+
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0', :group => :development
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
-
-ruby "2.1.0"

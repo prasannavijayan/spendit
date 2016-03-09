@@ -1,9 +1,11 @@
 class CreateExpenses < ActiveRecord::Migration
   def change
-    create_table :expenses do |t|
+    enable_extension 'uuid-ossp'
+
+    create_table :expenses, id: :uuid do |t|
       t.text :title
       t.float :amount
-      t.belongs_to :user 
+      t.uuid :user_id
 
       t.timestamps null: false
     end

@@ -8,21 +8,20 @@
 <body class="top-space">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <div class="top-stripe"></div>
+  <!-- Flash message -->
   <div class="container">
-    <% unless notice.blank? %>
-      <p class="notice alert alert-warning"><%= notice %></p>
-    <% end %>
-    <% unless alert.blank? %>
-      <p class="alert alert-primary" ><%= alert %></p>
-    <% end %>
+    <%= flash_messages %>
   </div>
+  <div class="container">
 
-  <%= yield %>
-  <br>
-  <div class="container">
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <%= render('expenses/sidemenu') %>
+
+    <%= yield %>
+
+    <div class="col-xs-3">
+      <%= render "expenses/budget_pane" %>
+    </div>
   </div>
-  <div class="stripe"></div>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

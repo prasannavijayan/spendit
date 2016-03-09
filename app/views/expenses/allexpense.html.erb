@@ -1,0 +1,42 @@
+<div class="col-xs-6 expense-pane">
+
+  <% @expense.each do |format|%>
+    <% m = format[0] %>
+    <h2>Expenses on <%= @months[m] %> <br>
+    <% monthly_budget = get_budget_by_month_year(m, format[1].first.created_at.year) %>
+    <% monthly_expense = get_all_month_expenses(m, format[1].first.created_at.year) %>
+    <% if monthly_budget != "0" %>
+      <%= monthly_budget %> - <span class="text-spent"><%= monthly_expense %></span> = <span class="text-remaining"><%= monthly_budget - monthly_expense %></span>
+    <% end %>
+    </h2><br>
+    <% @monthly_expense = format[1] %>
+    <table class="table">
+      <thead>
+        <tr><th>Title</th>
+        <th>Amount</th>
+        <th>Created By</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+    <% @monthly_expense.each do |month| %>
+        <tr>
+        <td><%= month.title %></td>
+        <td><%= month.amount %></td>
+        <% unless month.user.firstname.blank? %>
+          <td><%= month.user.firstname %></td>
+        <% else %>
+          <td><%= month.user.email %></td>
+        <% end %>
+        <td><%= month.created_at.strftime("%B %d, %Y") %></td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+    <hr>
+  <% end %>
+  <% if @expense.blank? %>
+  <br><br>
+   <p class="">Your slate is clean, you can add a new expense <%= link_to "here", new_expense_path %></p>
+  <% end %>
+</div>

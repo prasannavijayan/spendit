@@ -1,0 +1,29 @@
+/* Global scss */
+
+
+/* override bootstrap */
+.form-group {
+  label {
+    color: black !important;
+  }
+}
+
+/* Alert notice */
+
+.alert {
+  &-notice {
+    @extend .alert-info;
+  }
+}
+
+.text {
+  &-spent {
+    color: red;
+  }
+  &-remaining {
+    color: green;
+  }
+  &-right {
+    text-align: right;
+  }
+}

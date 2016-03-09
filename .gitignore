@@ -18,3 +18,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore .env files
+/.env
+
+# Ignore public assets
+/public/assets/*

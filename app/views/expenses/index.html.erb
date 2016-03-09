@@ -1,53 +1,57 @@
-<div class="container">
-  <div class="row">
 
-    <%= render('sidemenu') %>
 
-    <div class="col-xs-9">
-      <h2>Expenses on <%= @date.strftime("%B") %></h2>
-      <h6><i class="fa fa-calendar"></i> <%= @date.strftime("%B %d, %Y") %></h6>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Created by</th>
-            <th>Date</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% unless @expenses[@month].nil? %>
-            <% @expenses[@month].each do |expense| %>
-              <tr>
-                <td><%= expense.title %></td>
-                <td><%= expense.amount %></td>
-                <% unless expense.user.nil? %>
-                  <td><%= expense.user.email %></td>
-                <% else %>
-                  <td> - </td>
-                <% end %>
-                <td><%= expense.created_at.strftime("%B %d, %Y") %></td>
-                <td><%= link_to raw('<i class="fa fa-eye"></i>'), expense %></td>
-                <% if expense.user.email == @current_user.email %>
-                  <td><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_expense_path(expense) %></td>
-                  <td><%= link_to raw('<i class="fa fa-trash"></i>'), expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% else %>
-                  <td><td>
-                  <td><td>
-                <% end %>
-              </tr>
-            <% end %>
-          <% else %>
-            <tr><td><p class="text-small">No Expenses found.</p></td></tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-
-      <%= link_to raw('<i class="fa fa-plus"></i> Add New'), new_expense_path %>
+  <div class="col-xs-6 expense-pane">
+    <h2>Expenses on <%= @date.strftime("%B") %></h2>
+    <div class="row">
+      <div class="col-xs-4">
+        <i class="fa fa-calendar"></i> <%= @date.strftime("%B %d, %Y") %>
+      </div>
+      <div class="col-xs-8 text-right">
+        <%= link_to raw('<i class="fa fa-plus"></i> Add New'), new_expense_path %>
+      </div>
     </div>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Created by</th>
+          <th>Date</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% unless @expenses[@month].nil? %>
+          <% @expenses[@month].each do |expense| %>
+            <tr>
+              <td><%= expense.title %></td>
+              <td><i class="fa fa-inr"></i> <%= expense.amount %></td>
+              <% unless expense.user.firstname.blank? %>
+                <td><%= expense.user.firstname %></td>
+              <% else %>
+                <td><%= expense.user.email %></td>
+              <% end %>
+              <td><%= expense.created_at.strftime("%B %d, %Y") %></td>
+              <!-- <td><%= link_to raw('<i class="fa fa-eye"></i>'), expense %></td> -->
+              <% if expense.user.email == @current_user.email %>
+                <td><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_expense_path(expense) %></td>
+                <td><%= link_to raw('<i class="fa fa-trash"></i>'), expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% else %>
+                <td><td>
+                <td><td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr><td><p class="text-small">No Expenses found.</p></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <br><br>
   </div>
-</div>

@@ -4,60 +4,31 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    # binding.pry
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1
   # GET /expenses/1.json
   def show
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
+  end
+
+  # Show all expenses
+  def allexpense
+    @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    @expense = Expense.all.where(user_id: current_user.id).group_by { |m| m.created_at.month }
+    expense_details
   end
 
   # GET /expenses/new
   def new
     @expense = Expense.new
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # GET /expenses/1/edit
   def edit
-    @total_expenses = 0
-    @expenses = Expense.all.group_by { |m| m.created_at.month }
-    @month = Time.current.month
-    @date = Time.current
-    @current_user = current_user
-    unless @expenses[2].nil?
-      @expenses[2].each do |expense|
-        @total_expenses = @total_expenses + expense.amount
-      end
-    end
+    expense_details
   end
 
   # POST /expenses
@@ -67,7 +38,8 @@ class ExpensesController < ApplicationController
     @expense.user_id = current_user.id if current_user
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
+        format.html { redirect_to @expense }
+        flash[:success] = "Expense was success created."
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -82,7 +54,8 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       @expense.user_id = current_user.id if current_user
       if @expense.update(expense_params)
-        format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
+        format.html { redirect_to @expense }
+        flash[:success] = "Expense was success updated."
         format.json { render :show, status: :ok, location: @expense }
       else
         format.html { render :edit }
@@ -96,12 +69,15 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to expenses_url }
       format.json { head :no_content }
+      flash[:warning] = "Expense was success deleted."
     end
   end
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
@@ -111,4 +87,5 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:title, :amount)
     end
+
 end

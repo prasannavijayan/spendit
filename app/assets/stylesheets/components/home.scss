@@ -1,0 +1,49 @@
+body {
+  margin-bottom: 10px;
+}
+
+.top-stripe {
+  background-color: #3FC380;
+  top: 0;
+  position: absolute;
+  width:100%;
+  left:0;
+  height: 15px;
+}
+
+.top-space {
+  padding-top: 15px;
+}
+
+/* Landing page */
+.bg {
+  &-emerald {
+    background-color: #3FC380;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    color: white;
+  }
+}
+
+.landingpage {
+  .side {
+    &-header {
+      text-align: center;
+      margin-top: 15%;
+    }
+  }
+}
+
+
+/* global - Change the code there to global.scss */
+.font {
+  &72 {
+    font-size: 72px;
+  }
+
+  &32 {
+    font-size: 32px;
+  }
+}

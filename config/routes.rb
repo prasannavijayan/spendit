@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   resources :expenses
 
+  # used to check all the expenses
+  get '/allexpense/:id', as: :allexpense ,to: 'expenses#allexpense'
+
+  # PreferencesController
+  resources :preferences, only: [:show, :update]
+
+
+  # update user profile
+  resources :user_budgets
 
   # Redirect to dashboard
   authenticated :user do
