@@ -19,9 +19,11 @@
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Contact us</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#feature">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><%= link_to raw("Login"), user_session_path %></li>
+        <li><%= link_to raw("Sign Up"), new_user_registration_path %></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user_budget
-    @user_budget = current_user.user_budget
+    @user_budget = this_month_budget
   end
 
   # expense view
   def expense_details
-    @user_budget = UserBudget.new
+    @userbudget = UserBudget.new
     @months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     next_month_budget
     this_month_budget
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
        end
     else
       @next_month_budget = false
-      @budget = @budget_record.first.budget
+      @budget = @budget_record.first
     end
   end
 
@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
       @this_month_budget = true
     else
       @this_month_budget = false
-      @budget = @budget_record.first.budget
+      @budget = @budget_record.first
     end
   end
 
