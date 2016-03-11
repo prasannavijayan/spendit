@@ -1,5 +1,4 @@
 <div class="col-xs-6 expense-pane">
-
   <% @expense.each do |format|%>
     <% m = format[0] %>
     <h2>Expenses on <%= @months[m] %> <br>
@@ -39,4 +38,5 @@
   <br><br>
    <p class="">Your slate is clean, you can add a new expense <%= link_to "here", new_expense_path %></p>
   <% end %>
+  <%= link_to raw('<i class="fa fa-plus"></i> Add New'), new_expense_path %>
 </div>
