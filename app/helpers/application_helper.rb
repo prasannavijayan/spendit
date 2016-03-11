@@ -37,7 +37,7 @@ module ApplicationHelper
     # allexpense = Expense.all.group_by { |month| month.created_at.month }
     # Need to check this code for better performance.. This could be a challenging thing to do.
     total_expenses = 0
-    get_expense_by_year = Expense.all.group_by { |year| year.created_at.year }
+    get_expense_by_year = Expense.all.where(user_id: current_user.id).group_by { |year| year.created_at.year }
     get_expense_by_months = get_expense_by_year[year].group_by { |month| month.created_at.month }
     expense_of_the_month = get_expense_by_months[month]
     unless expense_of_the_month.nil?
