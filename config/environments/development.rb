@@ -43,7 +43,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Devise
-  config.action_mailer.default_url_options = { host: 'localhost:8000' }
+  config.action_mailer.default_url_options = { host: 'http://frozen-anchorage-18126.herokuapp.com/' }
 
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
