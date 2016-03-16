@@ -24,3 +24,8 @@
 
 # Ignore public assets
 /public/assets/*
+
+# Ignore deployments files
+/deploy.rb
+/deploy/*
+/Capfile

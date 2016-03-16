@@ -67,5 +67,13 @@ group :development, :test do
   gem 'spring'
 
   # Adding capistrano - deployment process
-  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+
 end
+
+# Process worker
+gem 'puma'
