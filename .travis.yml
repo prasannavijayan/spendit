@@ -1,6 +1,10 @@
 language: ruby
 rvm:
-   - 2.2
-
-# Sudo supported
+- 2.2
 sudo: required
+deploy:
+  provider: heroku
+  buildpack: ruby
+  api_key:
+    secure: LWa2EmC3B0KubTNRo43vT8cSBWJqbA30b+hqNsby3j2+8rI5xTcPdWvPUDnT7QRhG22OBU5VQD0xc/4XjhuEtGh/90RFLv+QiIWTK6iaXLWTPkzLNHrcLkm0I2F2Hx/ePPYz8n2QizgYp9c8AqmAmUYVgVynOwcXfLjVInKctC+A91deO+mZyGnnK/SqO5pKoqmWv4aFI/UnODhqRTr5DFlQaDUvttDSPxj0/DJB7N35tzTnS2XD2KUKIpUG7xjRHju5O9gFadE61qz3n6R8eZIjMqaICQjkDs69rAfwIVXV5QHwKUTTJjWyukEHOlKUH/cCJljIIe8cQ/Z0eMJYfOHvkyE8EJZiqwLrSTzK745lZNAwqa5Fgx7m/N+dL52pnZ9xub7Ko/8GK2Jm1Jyn6utCTyncoqe9cd0s1X3fN9y2GEZWFbecT4U+a4/E6knCuJj+u7hqdty7eSTX7kj81I6IqEXg8VpEOHn8KvPg9Vrt7MSt0P5CUZPcFkuqXULSRyN5DsOXuybLgyxZmqKjkgrYrq+0AJd8cbH63bBh0DDB0FwoAvfQx5kdJx9a9NfOcF8FRPFlTp7BB0uV9Nm1E3LE4eTU49Au8jXbWpDAjBzUEDgR6mxxB9zucFxoMKOfx52hnxUsnz2RkNXDqZoPXJV1k+XrG96FRyiwdOX0Zkk=
+  app: frozen-anchorage-18126
