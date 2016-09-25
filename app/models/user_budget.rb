@@ -2,6 +2,9 @@ class UserBudget < ActiveRecord::Base
 
   # Associations
   belongs_to :user
+
+  # Validation
+  validates :budget, presence: true
 end
 
 # == Schema Information
